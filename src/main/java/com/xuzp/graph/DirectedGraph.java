@@ -18,9 +18,13 @@ public class DirectedGraph<T> implements GraphInterface<T>, java.io.Serializable
 
     @Override
     public void addVertex(T vertexLabel) {
-        //若顶点相同时,新插入的顶点将覆盖原顶点,这是由LinkedHashMap的put方法决定的
-        //每添加一个顶点,会创建一个LinkedList列表,它存储该顶点对应的邻接点,或者说是与该顶点相关联的边
-        vertices.put(vertexLabel, new Vertex(vertexLabel));//new Vertex 对象,会创建一个LinkedList,该LinkedList用来表示该顶点的邻接表
+
+        VertexInterface vertex = vertices.get(vertexLabel);
+        if (vertex !=null) {
+            vertex.setCost(vertex.getCost()+1);
+        } else {
+            vertices.put(vertexLabel, new Vertex(vertexLabel));
+        }
     }
 
     @Override

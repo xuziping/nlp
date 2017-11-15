@@ -1,8 +1,9 @@
-package com.xuzp.fw;
+package com.xuzp.ksql;
 
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.corpus.dependency.CoNll.CoNLLSentence;
 import com.hankcs.hanlp.corpus.dependency.CoNll.CoNLLWord;
+import com.xuzp.fw.MainProcessor;
 import com.xuzp.graph.DirectedGraph;
 import com.xuzp.graph.GraphInterface;
 import com.xuzp.object.Unit;
@@ -11,20 +12,23 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
+/**
+ * @author za-xuzhiping
+ * @Date 2017/11/15
+ * @Time 17:25
+ * @Copyright @2017 Zhongan.com All right reserved
+ */
 @Slf4j
-public class MainProcessor {
+public class Main {
+
 
     private JedisPool pool;
     private Jedis jedis;
 
     public static void main(String[] args) {
         MainProcessor processor = new MainProcessor();
-        processor.setUp();
-        processor.parse("桌子上有一只苹果");
+//        processor.setUp();
+        processor.parse("查询李明的帽子价格");
 
     }
 
@@ -41,14 +45,6 @@ public class MainProcessor {
             log.info("{} --({})--> {}\n", word.LEMMA, word.DEPREL, word.HEAD.LEMMA);
             graph.addVertex(new Unit(word.LEMMA));
         }
-        List<CoNLLWord> nwords = getNWords(sentence);
-        for(CoNLLWord word: nwords){
-
-        }
     }
 
-    public List<CoNLLWord> getNWords(CoNLLSentence sentence){
-       return Arrays.stream(sentence.getWordArrayWithRoot())
-                .filter(word->word.CPOSTAG.equalsIgnoreCase("n")).collect(Collectors.toList());
-    }
 }
