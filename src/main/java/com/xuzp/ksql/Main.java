@@ -12,12 +12,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
-/**
- * @author za-xuzhiping
- * @Date 2017/11/15
- * @Time 17:25
- * @Copyright @2017 Zhongan.com All right reserved
- */
+
 @Slf4j
 public class Main {
 
