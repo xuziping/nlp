@@ -15,6 +15,10 @@ public class DBTable {
 
     private String tableName;
 
+    private String remark;
+
+
+
     private List<DBColumn> columns;
 
 }

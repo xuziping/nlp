@@ -88,7 +88,6 @@ public class DBMetaTest2 {
         ResultSet rs = dbmd.getCatalogs();//取可在此数据库中使用的类别名,在mysql中说白了就是可用的数据库名称，只有一列  
 
         while (rs.next()) {
-
             System.out.println(rs.getString(1));
         }
 
@@ -327,8 +326,8 @@ public class DBMetaTest2 {
 
 
         try {
-            List list = getTableInfo("user");
-            System.out.println(list);
+//            List list = getTableInfo("user");
+//            System.out.println(list);
             getRsInfo();
             getDBInfo();
         } finally {
