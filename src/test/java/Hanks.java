@@ -4,12 +4,7 @@ import com.hankcs.hanlp.seg.common.Term;
 
 import java.util.List;
 
-/**
- * @Author:za-xuzhiping
- * @Date :2017/10/17
- * @Time :17:22
- * @Copyright @2017 Zhongan.com All right reserved
- */
+
 public class Hanks {
 
     public static void main(String[] args) {

@@ -6,12 +6,7 @@ import org.wltea.analyzer.lucene.IKAnalyzer;
 import java.io.IOException;
 import java.io.StringReader;
 
-/**
- * @Author:za-xuzhiping
- * @Date :2017/10/10
- * @Time :13:47
- * @Copyright @2017 Zhongan.com All right reserved
- */
+
 public class test {
 
     public static void main(String[] args) throws IOException {
