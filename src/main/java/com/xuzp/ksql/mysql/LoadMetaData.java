@@ -102,6 +102,7 @@ public class LoadMetaData {
             dbTable.setSelfReferencingColName(rs.getString(col++));
             dbTable.setRefGeneration(rs.getString(col++));
         }
+        log.info("Load DBTable: {}", JSON.toJSONString(dbTable));
         return dbTable;
     }
 
@@ -111,31 +112,8 @@ public class LoadMetaData {
 
         DBInfo dbInfo = loadDataBaseInfo(dbmd);
 
+        DBTable dbTable = loadDBTableInfo(dbmd, "test", "user");
 
-        System.out.println("********************所有表********************************");
-
-        ResultSet rs = dbmd.getTables(null, "%", "user", new String[]{"TABLE"});
-
-        while (rs.next()) {
-            System.out.println("=========================");
-            System.out.println(rs.getString(3) + "->" + rs.getString(4));//打印表类别,表模式,表名称，列名称，
-
-
-            log("TABLE_CAT", rs);
-            log("TABLE_SCHEM", rs);
-            log("TABLE_NAME", rs);
-            log("TABLE_TYPE", rs);
-            log("REMARKS", rs);
-            log("TYPE_CAT", rs);
-            log("TYPE_SCHEM", rs);
-            log("TYPE_NAME", rs);
-            log("SELF_REFERENCING_COL_NAME", rs);
-            log("REF_GENERATION", rs);
-
-        }
-
-
-        System.out.println("##############################################################");
 
         /**
          * catalog 类别名称
@@ -145,7 +123,7 @@ public class LoadMetaData {
          * dbmd.getPrimaryKeys(catalog, schema, table)
          *
          */
-        rs = dbmd.getPrimaryKeys("test", null, "user");
+        ResultSet rs = dbmd.getPrimaryKeys("test", null, "user");
 
         while (rs.next()) {
 
